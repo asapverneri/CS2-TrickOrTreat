@@ -26,6 +26,7 @@
 <p>✅ $5000 money</p>
 <p>✅ Speed</p>
 <br>
+
 **Tricks**
 <p>✅ Kill</p>
 <p>✅ Strip weapons, but knife</p>
