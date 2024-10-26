@@ -9,8 +9,8 @@
   <img src="https://img.shields.io/github/v/tag/asapverneri/CS2-TrickOrTreat?style=for-the-badge&label=Version" alt="GitHub tag (with filter)" />
   <img src="https://img.shields.io/github/last-commit/asapverneri/CS2-TrickOrTreat?style=for-the-badge" alt="Last Commit" />
   <blockquote>
-    <strong>?? <span style="color:red;">CAUTION</span></strong>  
-    <br><span style="color:red;">This is a WIP, and there might be bugs.</span>
+    <strong>⚠️ <span>CAUTION</span></strong>  
+    <br><span>This is a WIP, and there might be bugs.</span>
   </blockquote>
 </div>
 
