@@ -3,6 +3,7 @@ using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Commands;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace TrickOrTreat;
 
@@ -11,7 +12,7 @@ public class TrickOrTreat : BasePlugin, IPluginConfig<TrickOrTreatConfig>
     public override string ModuleName => "CS2-TrickOrTreat";
     public override string ModuleDescription => "Small plugin for halloween";
     public override string ModuleAuthor => "verneri";
-    public override string ModuleVersion => "1.0";
+    public override string ModuleVersion => "1.1";
 
     private static readonly Dictionary<CCSPlayerController, DateTime> lastcmdUsage = new();
 
@@ -48,12 +49,29 @@ public class TrickOrTreat : BasePlugin, IPluginConfig<TrickOrTreatConfig>
         lastcmdUsage[player] = DateTime.Now;
 
         var playerPawn = player.PlayerPawn.Value;
-        var money = player.InGameMoneyServices;
 
-        if (player != null)
+
+        if (player != null && playerPawn != null)
         {
+            List<int> actions = new List<int>();
+
+            if (Config.TreatDeagle) actions.Add(0); 
+            if (Config.TrickSuicide) actions.Add(1);
+            if (Config.TreatGrenade) actions.Add(2);
+            if (Config.TreatHP) actions.Add(3);
+            if (Config.TrickStripweapons) actions.Add(4);
+            if (Config.TreatAK47) actions.Add(5);
+            if (Config.Trick50HP) actions.Add(6);
+            if (Config.Trick99HP) actions.Add(7);
+            if (Config.TreatHealthShot) actions.Add(8);
+            if (Config.TrickNothing) actions.Add(9);
+            if (Config.TreatMoney) actions.Add(10);
+            if (Config.TreatSpeed) actions.Add(11);
+
             Random random = new Random();
-            int action = random.Next(13);
+            int action = actions[random.Next(actions.Count)];
+            //Random random = new Random();
+            //int action = random.Next(12);
 
             switch (action)
             {
@@ -73,16 +91,16 @@ public class TrickOrTreat : BasePlugin, IPluginConfig<TrickOrTreatConfig>
                     break;
 
                 case 3:
-                    playerPawn.Health = 120;
-                    playerPawn.MaxHealth = 120;
+                    playerPawn.Health = Config.TreatHPValue;
+                    playerPawn.MaxHealth = Config.TreatHPValue;
                     Utilities.SetStateChanged(playerPawn, "CBaseEntity", "m_iHealth");
                     command.ReplyToCommand($"{Localizer["treat.give20hp"]}");
                     break;
 
                 case 4:
-                    player.RemoveWeapons();
+                    RemoveWeapons(player);
                     player.GiveNamedItem("weapon_knife");
-                    command.ReplyToCommand($"{Localizer["trick.stripweaponsbutknife"]}");
+                    command.ReplyToCommand($"{Localizer["trick.stripweapons"]}");
                     break;
 
                 case 5:
@@ -112,18 +130,12 @@ public class TrickOrTreat : BasePlugin, IPluginConfig<TrickOrTreatConfig>
                     break;
 
                 case 10:
-                    money.Account += 5000;
-                    Utilities.SetStateChanged(player, "CCSPlayerController_InGameMoneyServices", "m_iAccount");
-                    command.ReplyToCommand($"{Localizer["treat.money"]}");
+                    AddMoney(player);
+                    command.ReplyToCommand($"{Localizer["treat.money", Config.TreatMoneyValue]}");
                     break;
 
                 case 11:
-                    player.RemoveWeapons();
-                    command.ReplyToCommand($"{Localizer["trick.stripweapons"]}");
-                    break;
-
-                case 12:
-                    playerPawn.VelocityModifier = 1.15f;
+                    playerPawn.VelocityModifier = Config.TreatSpeedValue;
                     Utilities.SetStateChanged(player, "CCSPlayerPawn", "m_flVelocityModifier");
                     command.ReplyToCommand($"{Localizer["treat.speed"]}");
                     break;
@@ -133,5 +145,29 @@ public class TrickOrTreat : BasePlugin, IPluginConfig<TrickOrTreatConfig>
                     break;
             }
         }
+    }
+
+    private static void RemoveWeapons(CCSPlayerController? player)
+    {
+        if (player == null) return;
+        foreach (var weapon in player.PlayerPawn.Value!.WeaponServices!.MyWeapons)
+        {
+            if (weapon.Value != null)
+            {
+                if (weapon.Value.DesignerName == "weapon_c4")
+                    continue;
+
+                weapon.Value.Remove();
+            }
+        }
+    }
+
+    private void AddMoney(CCSPlayerController player)
+    {
+        var moneyServices = player.InGameMoneyServices;
+        if (moneyServices == null) return;
+
+        moneyServices.Account += Config.TreatMoneyValue;
+        Utilities.SetStateChanged(player, "CCSPlayerController", "m_pInGameMoneyServices");
     }
 }

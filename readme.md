@@ -30,7 +30,6 @@
 **Tricks**
 <p>✅ Kill</p>
 <p>✅ Strip weapons, but knife</p>
-<p>✅ Strip all weapons</p>
 <p>✅ -50hp</p>
 <p>✅ -99hp</p>
 <p>✅ Nothing</p>
@@ -45,7 +44,22 @@
 **Example config:**
 ```json
 {
-  "CommandCooldown": 2,   //Cooldown in minutes
+  "CommandCooldown": 2,   // cooldown in minutes
+  "TreatDeagle": true,
+  "TreatGrenade": true,
+  "TreatHealth": true,
+  "TreatHealthValue": 120,
+  "TreatAK47": true,
+  "TreatHealthShot": true,
+  "TreatMoney": true,
+  "TreatMoneyValue": 5000,
+  "TreatSpeed": true,
+  "TreatSpeedValue": 1.15,
+  "TrickSuicide": true,
+  "TrickStripweapons": true,
+  "Trick50HP": true,
+  "Trick99HP": true,
+  "TrickNothing": true,
   "ConfigVersion": 1
 }
 ```
