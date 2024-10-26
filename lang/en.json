@@ -1,0 +1,19 @@
+{
+  "happy.halloween": "{yellow}[TrickOrTreat] {default}Happy Halloween!",
+  "command.cooldown": "{yellow}[TrickOrTreat] {default}You must wait {0} more minute(s) before using this command again.",
+
+  "treat.givedeagle": "{yellow}[TrickOrTreat] {default}You got deagle a treat!",
+  "treat.grenade": "{yellow}[TrickOrTreat] {default}Surprise! You received a grenade.",
+  "treat.give20hp": "{yellow}[TrickOrTreat] {default}You got a health boost! Stay safe out there..",
+  "treat.giveak": "{yellow}[TrickOrTreat] {default}You got a treat as an AK47",
+  "treat.givehealthshot": "{yellow}[TrickOrTreat] {default}You got healthshot as a treat!",
+  "treat.money": "{yellow}[TrickOrTreat] {default}Damn, you got $5000!",
+  "treat.speed": "{yellow}[TrickOrTreat] {default}Surprise! You got some more speed!",
+
+  "trick.suicide": "{yellow}[TrickOrTreat] {default}You've been tricked! Better luck next time i guess.",
+  "trick.stripweaponsbutknife": "{yellow}[TrickOrTreat] {default}Trick! Your weapons vanished into thin air.",
+  "trick.stripweapons": "{yellow}[TrickOrTreat] {default}Trick! Your weapons vanished into thin air.",
+  "trick.take50hp": "{yellow}[TrickOrTreat] {default}Trick! Your HP reduced by half.",
+  "trick.take99hp": "{yellow}[TrickOrTreat] {default}Trick! Your HP reduced by 99 :)",
+  "trick.nothing": "{yellow}[TrickOrTreat] {default}Trick! You got nothing :)"
+} 
