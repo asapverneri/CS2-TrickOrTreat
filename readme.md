@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://cdn.discordapp.com/attachments/1288158253666144407/1299738757309796474/SCOUTZ_N_KNIVEZ_1.png?ex=671e4b8b&is=671cfa0b&hm=0d2431f0549dcba8a23119d9cc441b62bd7e1d6158e7deb5a4dacad4539df462&" width="500"/>
+  <img src="https://i.ibb.co/PsQ3x79f/TOT-1.png" width="500"/>
   <h3>🎮 CS2 Trick Or Treat</h3>
   <p>Simple plugin for halloween, it's pretty basic and has cooldown config.
   <br>I wanted to make something for my community cuz it's halloween.
